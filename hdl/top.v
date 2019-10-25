@@ -20,10 +20,6 @@
 module top (
     input CLK,
 
-    // hardware UART
-    output SER_TX,
-    input SER_RX,
-
 `ifdef flash_write
     inout SPI_IO1,
     inout SPI_SS,
@@ -33,7 +29,7 @@ module top (
 
 `ifdef pdm_audio
     // Audio out pin
-		output AUDIO_RIGHT,
+    output AUDIO_RIGHT,
     output AUDIO_LEFT,
 `endif
 
@@ -102,12 +98,11 @@ module top (
     output LED,
 `endif
 
-    // onboard USB interface
-    output USBPU
-);
-    // Disable USB
-    assign USBPU = 1'b0;
+    // hardware UART
+    output SER_TX,
+    input SER_RX
 
+);
     ///////////////////////////////////
     // Power-on Reset
     ///////////////////////////////////
@@ -130,12 +125,12 @@ module top (
     wire [31:0] iomem_rdata;
 
     // enable signals for each of the peripherals
-    wire gpio_en   = (iomem_addr[31:24] == 8'h03); /* GPIO mapped to 0x03xx_xxxx */
-    wire audio_en  = (iomem_addr[31:24] == 8'h04); /* Audio device mapped to 0x04xx_xxxx */
-    wire video_en  = (iomem_addr[31:24] == 8'h05); /* Video device mapped to 0x05xx_xxxx */
+    wire gpio_en    = (iomem_addr[31:24] == 8'h03); /* GPIO mapped to 0x03xx_xxxx */
+    wire audio_en   = (iomem_addr[31:24] == 8'h04); /* Audio device mapped to 0x04xx_xxxx */
+    wire video_en   = (iomem_addr[31:24] == 8'h05); /* Video device mapped to 0x05xx_xxxx */
     wire sdcard_en  = (iomem_addr[31:24] == 8'h06); /* SPI SD card mapped to 0x06xx_xxxx */
-    wire i2c_en    = (iomem_addr[31:24] == 8'h07); /* I2C device mapped to 0x07xx_xxxx */
-    wire flash_en    = (iomem_addr[31:24] == 8'h08); /* flash memory SPI mapped to 0x08xx_xxxx */
+    wire i2c_en     = (iomem_addr[31:24] == 8'h07); /* I2C device mapped to 0x07xx_xxxx */
+    wire flash_en   = (iomem_addr[31:24] == 8'h08); /* flash memory SPI mapped to 0x08xx_xxxx */
 
 `ifdef warm_boot
   wire boot_en    = (iomem_addr[31:24] == 8'h09); /* warm boot */

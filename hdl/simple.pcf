@@ -1,0 +1,23 @@
+set_io SER_TX 62
+
+# SD card reader
+set_io -nowarn SD_CS 101
+set_io -nowarn SD_SCK 104
+set_io -nowarn SD_MISO 105
+set_io -nowarn SD_MOSI 102
+
+# SPI flash interface on bottom of board
+set_io -nowarn SPI_SS 71
+set_io -nowarn SPI_SCK 70
+set_io -nowarn SPI_IO0 67
+set_io -nowarn SPI_IO1 68
+set_io -nowarn SPI_IO2 63
+set_io -nowarn SPI_IO3 64
+
+set_io SER_RX 61
+
+# LED
+set_io -nowarn LED 56
+
+# 25MHz clock
+set_io CLK 60
