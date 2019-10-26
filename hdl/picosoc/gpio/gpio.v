@@ -13,15 +13,15 @@ module gpio
   output reg [31:0] iomem_rdata,
   output reg iomem_ready,
 	input [31:0] iomem_wdata,
-  inout [7:0] BUTTONS, /* buttons in from FPGA pins */
+  inout [1:0] BUTTONS, /* buttons in from FPGA pins */
   output led);
 
-  wire[7:0] gpio_buttons;
+  wire[1:0] gpio_buttons;
 
   SB_IO #(
       .PIN_TYPE(6'b 0000_01),
       .PULLUP(1'b 1)
-  ) buttons_input [7:0] (
+  ) buttons_input [1:0] (
       .PACKAGE_PIN(BUTTONS),
       .D_IN_0(gpio_buttons)
   );

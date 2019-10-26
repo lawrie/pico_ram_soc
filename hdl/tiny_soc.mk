@@ -2,7 +2,7 @@ upload: hardware.bin firmware.bin
 	stty -F /dev/ttyACM0 raw -echo 115200
 	cat hardware.bin >/dev/ttyACM0
 
-hardware.blif: $(VERILOG_FILES) firmware.hex
+hardware.json: $(VERILOG_FILES) firmware.hex
 	yosys -f "verilog $(DEFINES)" -ql hardware.log -p 'synth_ice40 -top top -json  hardware.json' $(VERILOG_FILES)
 
 hardware.asc: $(PCF_FILE) hardware.json

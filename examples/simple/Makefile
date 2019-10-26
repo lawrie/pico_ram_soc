@@ -12,6 +12,7 @@ PCF_FILE = $(HDL_DIR)/simple.pcf
 LDS_FILE = $(FIRMWARE_DIR)/firmware.lds
 START_FILE = $(FIRMWARE_DIR)/firmware.S
 C_FILES = main.c $(INCLUDE_DIR)/uart/uart.c
+DEFINES = -Dgpio
 
 include $(HDL_DIR)/tiny_soc.mk
 

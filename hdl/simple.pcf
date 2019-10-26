@@ -21,3 +21,9 @@ set_io -nowarn LED 56
 
 # 25MHz clock
 set_io CLK 60
+
+# Buttons
+
+set_io BUTTONS[0] 49
+set_io BUTTONS[1] 52
+

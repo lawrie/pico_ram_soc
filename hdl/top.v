@@ -92,7 +92,7 @@ module top (
 
 `ifdef gpio
     // GPIO buttons
-    inout  [7:0] BUTTONS,
+    inout  [1:0] BUTTONS,
 
     // onboard LED
     output LED,
